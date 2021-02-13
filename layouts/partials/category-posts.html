@@ -8,12 +8,18 @@
             <div class="pb-3">
                 <h5><span class="badge category">Recent</span></h5>
                 <ul class="list-unstyled">
-                    {{ range first $recent (where .Site.RegularPages "Type" "in" site.Params.mainSections) }}
-                        <li>
-                            {{ .Date.Format "Jan 2 2006" }}
-                            <a href="{{ .Permalink }}">{{ .Title }}</a>
-                        </li>
-                    {{ end }}
+                    <table width="100%">
+                        {{ range first $recent (where .Site.RegularPages "Type" "in" site.Params.mainSections) }}
+                            <tr>
+                                <td>
+                                    <a href="{{ .Permalink }}" style="color: initial;">{{ .Title }}</a>
+                                </td>
+                                <td style="text-align: right;">
+                                    {{ .Date.Format "2 Jan 2006" }}
+                                </td>
+                            </tr>
+                        {{ end }}
+                    </table>
                 </ul>
             </div>
 
@@ -25,12 +31,18 @@
                     </span>
                     </h5>
                     <ul class="list-unstyled">
-                        {{ range $taxonomy.Pages }}
-                            <li>
-                                {{ .Date.Format "Jan 2 2006" }}
-                                <a href="{{ .Permalink }}">{{ .Title }}</a>
-                            </li>
-                        {{ end }}
+                        <table width="100%">
+                            {{ range $taxonomy.Pages }}
+                                <tr>
+                                    <td>
+                                        <a href="{{ .Permalink }}" style="color: initial;">{{ .Title }}</a>
+                                    </td>
+                                    <td style="text-align: right;">
+                                        {{ .Date.Format "2 Jan 2006" }}
+                                    </td>
+                                </tr>
+                            {{ end }}
+                        </table>
                     </ul>
                 </div>
             {{ end }}

@@ -1,0 +1,29 @@
+<div class="pl-sm-4 ml-sm-5 pt-2">
+    <div class="row">
+        <div class="col-12">
+            {{ range .Data.Pages.GroupByDate "2006" }}
+                <h5>
+                    <span class="badge category text-capitalize">
+                        {{ .Key }}
+                    </span>
+                </h5>
+
+                <ul class="list-unstyled">
+                    <table width="100%">
+                        {{ range .Pages }}
+                            <tr>
+                                <td>
+                                    <a href="{{ .Permalink }}" style="color: initial;">{{ .Title }}</a>
+                                </td>
+                                <td style="text-align: right;">
+                                    {{ .Date.Format "2 Jan 2006" }}
+                                </td>
+                            </tr>
+                        {{ end }}
+                    </table>
+                </ul>
+
+            {{ end }}
+        </div>
+    </div>
+</div>
